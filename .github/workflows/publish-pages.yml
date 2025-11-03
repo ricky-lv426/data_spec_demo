@@ -1,0 +1,33 @@
+name: Publish data specification
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    name: Build site and publish to gh-pages (manual only)
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install pandoc
+        run: |
+          sudo apt-get update && sudo apt-get install -y pandoc
+
+      - name: Build site directory
+        run: |
+          mkdir -p site/data
+          pandoc data-specification.md -o site/index.html --standalone --metadata title="Data specification"
+          cp -R data/* site/data/
+
+      - name: Publish to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          publish_branch: gh-pages
+
+      - name: Output published URL
+        run: |
+          echo "Published to branch: gh-pages"

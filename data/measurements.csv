@@ -1,0 +1,4 @@
+patient_id,date,hba1c_mmol_per_mol,bp_systolic,bp_diastolic,weight_kg
+P001,2024-01-15,54,130,80,82.5
+P002,2024-02-20,72,145,90,95.0
+P003,2024-03-10,63,138,85,88.2
