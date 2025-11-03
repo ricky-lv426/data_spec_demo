@@ -1,0 +1,4 @@
+patient_id,age,sex,ethnicity,imd_quintile
+P001,45,M,White,3
+P002,67,F,Asian,2
+P003,52,M,Black,4
