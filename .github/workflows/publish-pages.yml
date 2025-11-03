@@ -17,9 +17,11 @@ jobs:
 
       - name: Build site directory
         run: |
-          mkdir -p site/data
-          pandoc data-specification.md -o site/index.html --standalone --metadata title="Data specification"
+          mkdir -p site/data site/assets
+          # Generate HTML and reference the stylesheet at `assets/style.css` (relative path on the published site)
+          pandoc data-specification.md -o site/index.html --standalone --metadata title="Data specification" --css=assets/style.css
           cp -R data/* site/data/
+          cp -R assets/* site/assets/
 
       - name: Publish to gh-pages
         uses: peaceiris/actions-gh-pages@v3

@@ -4,8 +4,8 @@ This repository contains a small demo dataset (CSV) and a specification document
 
 ## Files included
 
-- `data/sample_patients.csv` — one row per patient with demographic fields.
-- `data/measurements.csv` — repeated measures per patient with clinical measurements.
+- [data/sample_patients.csv](data/sample_patients.csv) — one row per patient with demographic fields.
+- [data/measurements.csv](data/measurements.csv) — repeated measures per patient with clinical measurements.
 
 Both CSV files are intentionally synthetic and contain dummy values for demonstration only.
 
@@ -35,8 +35,8 @@ This is simulated data created for demonstration. No real patient data were used
 
 When this repository's data specification is published to GitHub Pages (via the manual workflow `Publish data specification`), a static site is created containing this document and the `data/` folder. Links on the published page point to the CSV files here:
 
-- data/sample_patients.csv
-- data/measurements.csv
+- [sample_patients.csv](data/sample_patients.csv)
+- [measurements.csv](data/measurements.csv)
 
 You can click these links on the published site to download or view the raw CSV files.
 
