@@ -11,15 +11,26 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install pandoc
+      - name: Install dependencies
         run: |
           sudo apt-get update && sudo apt-get install -y pandoc
 
-      - name: Build site directory
+      - name: Build site directory (prefer notebook)
         run: |
           mkdir -p site/data site/assets
-          # Generate HTML and reference the stylesheet at `assets/style.css` (relative path on the published site)
-          pandoc data-specification.md -o site/index.html --standalone --metadata title="Data specification" --css=assets/style.css
+          if [ -f data-specification.ipynb ]; then
+            # install python deps and notebook tools
+            python3 -m pip install --upgrade pip
+            if [ -f scripts/requirements.txt ]; then
+              pip install -r scripts/requirements.txt
+            fi
+            pip install nbconvert jupyter
+            # Execute the notebook and convert to HTML (output to site/index.html)
+            jupyter nbconvert --to html --execute data-specification.ipynb --output site/index.html --ExecutePreprocessor.timeout=600
+          else
+            # Fallback to pandoc conversion of the markdown
+            pandoc data-specification.md -o site/index.html --standalone --metadata title="Data specification" --css=assets/style.css
+          fi
           cp -R data/* site/data/
           cp -R assets/* site/assets/
 
