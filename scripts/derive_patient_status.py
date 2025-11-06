@@ -7,6 +7,7 @@ Usage:
     python3 scripts/derive_patient_status.py
 
 This script mirrors the behaviour of the repository's R version but written in Python.
+
 """
 from __future__ import annotations
 import sys
