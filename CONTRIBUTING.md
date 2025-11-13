@@ -41,6 +41,8 @@ PR checklist (suggested)
 - [ ] `data-specification.md` has been updated for any schema/field changes.
 - [ ] CSV changes are synthetic (this repo contains only synthetic/demo data) and include a note explaining why values changed.
 - [ ] Workflow changes documented and tested (e.g., local test or documented steps to run on Actions).
+- [ ] New or changed functionality is covered by unit tests (pytest) and tests pass locally.
+- [ ] If you add new Python modules under `scripts/`, ensure the package is importable (add an `__init__.py` if needed) and update `scripts/requirements.txt` when new test/runtime deps are required.
 
 ## Review process
 
@@ -97,3 +99,37 @@ Permissions notes
 - If you're unsure how to proceed, open an issue and tag a maintainer or team. If a PR requires special permissions (for example changes to the Pages settings), note that in the PR so maintainers can take action.
 
 Thank you for contributing — clear issues and small, focused PRs make reviews fast and reliable.
+
+## Testing, scripts and CI
+
+We use pytest for unit tests and a GitHub Actions workflow to run tests on push and pull requests. Follow these guidelines when working with scripts and tests:
+
+- Install test/runtime dependencies locally before running tests. From the repository root:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r scripts/requirements.txt
+```
+
+- Run the tests locally with:
+
+```bash
+pytest -q
+```
+
+- Test files should live under `tests/` and be named `test_*.py`. Test only public, deterministic behaviour where possible.
+
+- When adding or changing functions in `scripts/`:
+  - Add unit tests covering normal and edge cases for the new behaviour.
+  - Keep tests small and focused (one assertion concept per test).
+  - Make `scripts/` importable (either by including an empty `scripts/__init__.py` or ensuring the test job sets PYTHONPATH). The repository already includes a workflow that sets PYTHONPATH on the runner.
+  - Update `scripts/requirements.txt` to include any new dependencies (including test-only dependencies such as `pytest`) and document why they were added in the PR description.
+
+- CI behaviour expectations:
+  - Pull requests to `main` should pass the `Run Python tests` workflow before merging.
+  - If tests depend on external services, mock or stub those calls for CI or mark tests appropriately so they are not run in CI.
+
+- If a test failure occurs on CI but not locally, check Python version differences, installed dependency versions (use pinned versions if reproducibility is important), and whether the test relies on filesystem paths or environment variables.
+
+If you need help writing tests or adding the CI workflow, open an issue or tag a maintainer — maintainers can help with test design and debugging CI failures.

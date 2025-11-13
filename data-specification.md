@@ -46,9 +46,9 @@ This demo dataset is provided for educational/demonstration purposes. You may re
 
 ## Contact
 
-Repository owner: demo maintainer (no real contact provided in this demo).
+Repository owner: Ricky Olivier.
 
 
 ## Scripts
 
-See [Scripts documentation](scripts/README.md) — detailed usage and assumptions for the scripts in the `scripts/` folder.
+See [Scripts documentation](https://github.com/ricky-lv426/data_spec_demo/blob/main/scripts/README.md) — detailed usage and assumptions for the scripts in the `scripts/` folder.
