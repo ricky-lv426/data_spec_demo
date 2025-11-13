@@ -51,4 +51,4 @@ Repository owner: demo maintainer (no real contact provided in this demo).
 
 ## Scripts
 
-See [Scripts documentation](scripts/README.md) — detailed usage and assumptions for the scripts in the `scripts/` folder. This file is included in the published site and linked here for convenience.
+See [Scripts documentation](scripts/README.md) — detailed usage and assumptions for the scripts in the `scripts/` folder.

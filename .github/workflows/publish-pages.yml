@@ -17,14 +17,11 @@ jobs:
 
       - name: Build site directory
         run: |
-          mkdir -p site/data site/assets site/scripts
+          mkdir -p site/data site/assets
           # Generate HTML and reference the stylesheet at `assets/style.css` (relative path on the published site)
-          # Include scripts/README.md so scripts documentation appears on the published page.
-          pandoc data-specification.md scripts/README.md -o site/index.html --standalone --metadata title="Data specification" --css=assets/style.css
+          pandoc data-specification.md -o site/index.html --standalone --metadata title="Data specification" --css=assets/style.css
           cp -R data/* site/data/
           cp -R assets/* site/assets/
-          # Copy the scripts README into the site so it is available as a separate resource
-          cp scripts/README.md site/scripts/README.md
 
       - name: Publish to gh-pages
         uses: peaceiris/actions-gh-pages@v3
