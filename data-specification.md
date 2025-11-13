@@ -91,3 +91,7 @@ Output
 Notes
 
 - This is a small demo script with reasonable defaults. If you want different average heights, alternative BP thresholds, or another rule for selecting weight/BP (e.g. mean instead of latest), edit `scripts/derive_patient_status.py` accordingly.
+
+See also
+
+- [Scripts documentation](scripts/README.md) — detailed usage and assumptions for the scripts in the `scripts/` folder. This file is included in the published site and linked here for convenience.
