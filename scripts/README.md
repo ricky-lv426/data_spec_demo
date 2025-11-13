@@ -1,4 +1,4 @@
-# scripts
+# Scripts
 
 This folder contains a small script to derive patient-level blood pressure and weight categories from the demo CSVs in `data/`.
 
