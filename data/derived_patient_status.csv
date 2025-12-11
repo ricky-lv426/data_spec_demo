@@ -1,0 +1,4 @@
+patient_id,sex,ethnicity,measurement_date,bp_systolic,bp_diastolic,bp_category,weight_kg,height_cm,height_source,bmi,weight_category
+P001,M,White,2024-01-15,130,80,normal,82.5,175,assumed_by_sex_ethnicity,26.9,overweight
+P002,F,Asian,2024-02-20,145,90,high,95.0,157,assumed_by_sex_ethnicity,38.5,obese
+P003,M,Black,2024-03-10,138,85,normal,88.2,174,assumed_by_sex_ethnicity,29.1,overweight
