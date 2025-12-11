@@ -1,5 +1,4 @@
-```markdown
-# Processing workflow: inputs → derived_patient_status.csv
+# Processing workflow
 
 This document describes how the input CSV files are transformed into the derived patient-level
 summary `data/derived_patient_status.csv` in this demo repository.
@@ -50,5 +49,3 @@ This will write `data/derived_patient_status.csv` and print the number of rows w
 
 - The height assumptions and classification rules are demo-only and should not be used for
   clinical purposes.
-
-```
